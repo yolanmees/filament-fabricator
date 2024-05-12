@@ -2,6 +2,20 @@
 
 All notable changes to `filament-fabricator` will be documented in this file.
 
+## v2.2.2 - 2024-05-12
+
+### What's Changed
+
+* build(deps): bump aglipanci/laravel-pint-action from 2.3.1 to 2.4 by @dependabot in https://github.com/Z3d0X/filament-fabricator/pull/152
+* build(deps): bump dependabot/fetch-metadata from 2.0.0 to 2.1.0 by @dependabot in https://github.com/Z3d0X/filament-fabricator/pull/156
+* Allow string IDs by @rojtjo in https://github.com/Z3d0X/filament-fabricator/pull/158
+
+### New Contributors
+
+* @rojtjo made their first contribution in https://github.com/Z3d0X/filament-fabricator/pull/158
+
+**Full Changelog**: https://github.com/Z3d0X/filament-fabricator/compare/v2.2.1...v2.2.2
+
 ## v2.2.1 - 2024-04-15
 
 ### What's Changed
