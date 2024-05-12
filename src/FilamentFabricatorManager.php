@@ -189,7 +189,7 @@ class FilamentFabricatorManager
         });
     }
 
-    public function getPageUrlFromId(int $id, bool $prefixSlash = false): ?string
+    public function getPageUrlFromId(int|string $id, bool $prefixSlash = false): ?string
     {
         $url = $this->getPageUrls()[$id];
 
