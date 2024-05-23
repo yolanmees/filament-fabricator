@@ -71,33 +71,35 @@ class FilamentFabricatorServiceProvider extends PackageServiceProvider
 
     public function bootingPackage(): void
     {
-        Route::bind('filamentFabricatorPage', function ($value) {
-            $pageModel = FilamentFabricator::getPageModel();
-
-            $pageUrls = FilamentFabricator::getPageUrls();
-
-            $value = Str::start($value, '/');
-
-            $pageId = array_search($value, $pageUrls);
-
-            return $pageModel::query()
-                ->where('id', $pageId)
-                ->firstOrFail();
-        });
-
-        $this->registerComponentsFromDirectory(
-            Layout::class,
-            config('filament-fabricator.layouts.register'),
-            config('filament-fabricator.layouts.path'),
-            config('filament-fabricator.layouts.namespace')
-        );
-
-        $this->registerComponentsFromDirectory(
-            PageBlock::class,
-            config('filament-fabricator.page-blocks.register'),
-            config('filament-fabricator.page-blocks.path'),
-            config('filament-fabricator.page-blocks.namespace')
-        );
+        if (! $this->app->runningInConsole()) {
+            Route::bind('filamentFabricatorPage', function ($value) {
+                $pageModel = FilamentFabricator::getPageModel();
+    
+                $pageUrls = FilamentFabricator::getPageUrls();
+    
+                $value = Str::start($value, '/');
+    
+                $pageId = array_search($value, $pageUrls);
+    
+                return $pageModel::query()
+                    ->where('id', $pageId)
+                    ->firstOrFail();
+            });
+    
+            $this->registerComponentsFromDirectory(
+                Layout::class,
+                config('filament-fabricator.layouts.register'),
+                config('filament-fabricator.layouts.path'),
+                config('filament-fabricator.layouts.namespace')
+            );
+    
+            $this->registerComponentsFromDirectory(
+                PageBlock::class,
+                config('filament-fabricator.page-blocks.register'),
+                config('filament-fabricator.page-blocks.path'),
+                config('filament-fabricator.page-blocks.namespace')
+            );
+        }
     }
 
     protected function registerComponentsFromDirectory(string $baseClass, array $register, ?string $directory, ?string $namespace): void
